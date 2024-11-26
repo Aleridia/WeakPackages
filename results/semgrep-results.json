@@ -1,0 +1,75 @@
+{
+    "version": "1.97.0",
+    "results": [
+        {
+            "check_id": "c.lang.security.insecure-use-gets-fn.insecure-use-gets-fn",
+            "path": "main.c",
+            "start": {
+                "line": 9,
+                "col": 5,
+                "offset": 201
+            },
+            "end": {
+                "line": 9,
+                "col": 17,
+                "offset": 213
+            },
+            "extra": {
+                "metavars": {},
+                "message": "Avoid 'gets()'. This function does not consider buffer boundaries and can lead to buffer overflows. Use 'fgets()' or 'gets_s()' instead.",
+                "metadata": {
+                    "cwe": [
+                        "CWE-676: Use of Potentially Dangerous Function"
+                    ],
+                    "references": [
+                        "https://us-cert.cisa.gov/bsi/articles/knowledge/coding-practices/fgets-and-gets_s"
+                    ],
+                    "category": "security",
+                    "technology": [
+                        "c"
+                    ],
+                    "confidence": "MEDIUM",
+                    "subcategory": [
+                        "audit"
+                    ],
+                    "likelihood": "LOW",
+                    "impact": "HIGH",
+                    "license": "Commons Clause License Condition v1.0[LGPL-2.1-only]",
+                    "vulnerability_class": [
+                        "Dangerous Method or Function"
+                    ],
+                    "source": "https://semgrep.dev/r/c.lang.security.insecure-use-gets-fn.insecure-use-gets-fn",
+                    "shortlink": "https://sg.run/dKqX",
+                    "semgrep.dev": {
+                        "rule": {
+                            "origin": "community",
+                            "r_id": 8834,
+                            "rule_id": "GdU7OE",
+                            "rv_id": 833388,
+                            "url": "https://semgrep.dev/playground/r/LjTEbpn/c.lang.security.insecure-use-gets-fn.insecure-use-gets-fn",
+                            "version_id": "LjTEbpn"
+                        }
+                    }
+                },
+                "severity": "ERROR",
+                "fingerprint": "fbf88a2617e1ce354aac666c0355ec80ad9d3812d788573f3b73d778064ab2c7d650f34ce18e27fc557de91f22bf12de827175975f985aeb7806f4445da61841_0",
+                "lines": "    gets(buffer); // Unsafe function",
+                "is_ignored": false,
+                "engine_kind": "OSS",
+                "validation_state": "NO_VALIDATOR"
+            }
+        }
+    ],
+    "errors": [],
+    "paths": {
+        "scanned": [
+            "CMakeLists.txt",
+            "README.md",
+            "database.c",
+            "database.h",
+            "main.c"
+        ]
+    },
+    "interfile_languages_used": [],
+    "skipped_rules": []
+}
