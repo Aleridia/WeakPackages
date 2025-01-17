@@ -12,4 +12,4 @@ Rules are default rules with additionnal coverage from [this project](https://gi
 - Run with docker : `sudo docker run -v "${PWD}/packages:/src" -v "${PWD}/results:/results" -v "${PWD}/resources:/resources" zricethezav/gitleaks:latest dir -c /resources/gitleaks-rules.toml -f json -r /results/gitleaks-report.json /src`
 
 ### Hadolint
-- Run with docker : `sudo docker run -i -v hadolint.yaml:/.config/hadolint.yaml hadolint/hadolint < Dockerfile`
+- Run with docker : `sudo docker run --rm -i hadolint/hadolint hadolint -f json - < packages/Dockerfile/Dockerfile > results/hadolint.json`
