@@ -2,17 +2,79 @@
     "version": "1.97.0",
     "results": [
         {
-            "check_id": "c.lang.security.insecure-use-gets-fn.insecure-use-gets-fn",
-            "path": "main.c",
+            "check_id": "dockerfile.security.last-user-is-root.last-user-is-root",
+            "path": "Dockerfile/Dockerfile",
             "start": {
-                "line": 9,
-                "col": 5,
-                "offset": 201
+                "line": 11,
+                "col": 1,
+                "offset": 253
             },
             "end": {
-                "line": 9,
+                "line": 11,
+                "col": 10,
+                "offset": 262
+            },
+            "extra": {
+                "metavars": {},
+                "message": "The last user in the container is 'root'. This is a security hazard because if an attacker gains control of the container they will have root access. Switch back to another user after running commands as 'root'.",
+                "metadata": {
+                    "cwe": [
+                        "CWE-269: Improper Privilege Management"
+                    ],
+                    "source-rule-url": "https://github.com/hadolint/hadolint/wiki/DL3002",
+                    "references": [
+                        "https://github.com/hadolint/hadolint/wiki/DL3002"
+                    ],
+                    "category": "security",
+                    "technology": [
+                        "dockerfile"
+                    ],
+                    "confidence": "MEDIUM",
+                    "owasp": [
+                        "A04:2021 - Insecure Design"
+                    ],
+                    "subcategory": [
+                        "audit"
+                    ],
+                    "likelihood": "MEDIUM",
+                    "impact": "MEDIUM",
+                    "license": "Semgrep Rules License v1.0. For more details, visit semgrep.dev/legal/rules-license",
+                    "vulnerability_class": [
+                        "Improper Authorization"
+                    ],
+                    "source": "https://semgrep.dev/r/dockerfile.security.last-user-is-root.last-user-is-root",
+                    "shortlink": "https://sg.run/5Z43",
+                    "semgrep.dev": {
+                        "rule": {
+                            "origin": "community",
+                            "r_id": 20147,
+                            "rule_id": "ReU2n5",
+                            "rv_id": 945267,
+                            "url": "https://semgrep.dev/playground/r/0bT151o/dockerfile.security.last-user-is-root.last-user-is-root",
+                            "version_id": "0bT151o"
+                        }
+                    }
+                },
+                "severity": "ERROR",
+                "fingerprint": "1b518fa742e2f14781ee554330f3eba817cb7ff385ef3c6dc62288a1d7e48bf9543eaecf4b8f1e786d7c54fe2f30b1e6095b68e124bfac80563a10e9cf368cfb_0",
+                "lines": "USER root",
+                "is_ignored": false,
+                "engine_kind": "OSS",
+                "validation_state": "NO_VALIDATOR"
+            }
+        },
+        {
+            "check_id": "c.lang.security.insecure-use-gets-fn.insecure-use-gets-fn",
+            "path": "WeakPackage-c/main.c",
+            "start": {
+                "line": 11,
+                "col": 5,
+                "offset": 228
+            },
+            "end": {
+                "line": 11,
                 "col": 17,
-                "offset": 213
+                "offset": 240
             },
             "extra": {
                 "metavars": {},
@@ -34,7 +96,7 @@
                     ],
                     "likelihood": "LOW",
                     "impact": "HIGH",
-                    "license": "Commons Clause License Condition v1.0[LGPL-2.1-only]",
+                    "license": "Semgrep Rules License v1.0. For more details, visit semgrep.dev/legal/rules-license",
                     "vulnerability_class": [
                         "Dangerous Method or Function"
                     ],
@@ -45,16 +107,538 @@
                             "origin": "community",
                             "r_id": 8834,
                             "rule_id": "GdU7OE",
-                            "rv_id": 833388,
-                            "url": "https://semgrep.dev/playground/r/LjTEbpn/c.lang.security.insecure-use-gets-fn.insecure-use-gets-fn",
-                            "version_id": "LjTEbpn"
+                            "rv_id": 945170,
+                            "url": "https://semgrep.dev/playground/r/YDTvRlQ/c.lang.security.insecure-use-gets-fn.insecure-use-gets-fn",
+                            "version_id": "YDTvRlQ"
                         }
                     }
                 },
                 "severity": "ERROR",
-                "fingerprint": "fbf88a2617e1ce354aac666c0355ec80ad9d3812d788573f3b73d778064ab2c7d650f34ce18e27fc557de91f22bf12de827175975f985aeb7806f4445da61841_0",
+                "fingerprint": "bbd3fa3d9e2a662e991345dbf3c50f41ad74b8a904a5a9fc36707f4dbdcf1e9df9800354b4389b79377713fc2ce723ca0babea0ae4ccb1078987cec90f6d5230_0",
                 "lines": "    gets(buffer); // Unsafe function",
                 "is_ignored": false,
+                "engine_kind": "OSS",
+                "validation_state": "NO_VALIDATOR"
+            }
+        },
+        {
+            "check_id": "java.lang.security.audit.object-deserialization.object-deserialization",
+            "path": "WeakPackage-java/src/main/java/WeakPackageId/InsecureDeserialization.java",
+            "start": {
+                "line": 6,
+                "col": 9,
+                "offset": 183
+            },
+            "end": {
+                "line": 6,
+                "col": 98,
+                "offset": 272
+            },
+            "extra": {
+                "metavars": {},
+                "message": "Found object deserialization using ObjectInputStream. Deserializing entire Java objects is dangerous because malicious actors can create Java object streams with unintended consequences. Ensure that the objects being deserialized are not user-controlled. If this must be done, consider using HMACs to sign the data stream to make sure it is not tampered with, or consider only transmitting object fields and populating a new object.",
+                "metadata": {
+                    "cwe": [
+                        "CWE-502: Deserialization of Untrusted Data"
+                    ],
+                    "owasp": [
+                        "A08:2017 - Insecure Deserialization",
+                        "A08:2021 - Software and Data Integrity Failures"
+                    ],
+                    "source-rule-url": "https://find-sec-bugs.github.io/bugs.htm#OBJECT_DESERIALIZATION",
+                    "references": [
+                        "https://www.owasp.org/index.php/Deserialization_of_untrusted_data",
+                        "https://www.oracle.com/java/technologies/javase/seccodeguide.html#8"
+                    ],
+                    "category": "security",
+                    "technology": [
+                        "java"
+                    ],
+                    "cwe2022-top25": true,
+                    "cwe2021-top25": true,
+                    "subcategory": [
+                        "audit"
+                    ],
+                    "likelihood": "LOW",
+                    "impact": "HIGH",
+                    "confidence": "LOW",
+                    "license": "Semgrep Rules License v1.0. For more details, visit semgrep.dev/legal/rules-license",
+                    "vulnerability_class": [
+                        "Insecure Deserialization "
+                    ],
+                    "source": "https://semgrep.dev/r/java.lang.security.audit.object-deserialization.object-deserialization",
+                    "shortlink": "https://sg.run/Ek0A",
+                    "semgrep.dev": {
+                        "rule": {
+                            "origin": "community",
+                            "r_id": 9181,
+                            "rule_id": "GdU7py",
+                            "rv_id": 945687,
+                            "url": "https://semgrep.dev/playground/r/bZTXw4q/java.lang.security.audit.object-deserialization.object-deserialization",
+                            "version_id": "bZTXw4q"
+                        }
+                    }
+                },
+                "severity": "WARNING",
+                "fingerprint": "e52012e3384ba30a42dcb9c99eec3483b93a695ccbe301e52fe13f36785b22cf1b7fa719ac05d45ac09736d0a837d0d775eba6e62936a18cb36b3f15786f971d_0",
+                "lines": "        ObjectInputStream in = new ObjectInputStream(new FileInputStream(\"maliciousObject.ser\"));",
+                "is_ignored": false,
+                "engine_kind": "OSS",
+                "validation_state": "NO_VALIDATOR"
+            }
+        },
+        {
+            "check_id": "java.lang.security.do-privileged-use.do-privileged-use",
+            "path": "WeakPackage-java/src/main/java/WeakPackageId/PrivilegeUse.java",
+            "start": {
+                "line": 6,
+                "col": 5,
+                "offset": 91
+            },
+            "end": {
+                "line": 12,
+                "col": 6,
+                "offset": 325
+            },
+            "extra": {
+                "metavars": {
+                    "$ACTION": {
+                        "start": {
+                            "line": 6,
+                            "col": 11,
+                            "offset": 97
+                        },
+                        "end": {
+                            "line": 6,
+                            "col": 19,
+                            "offset": 105
+                        },
+                        "abstract_content": "MyAction"
+                    }
+                },
+                "message": "Marking code as privileged enables a piece of trusted code to temporarily enable access to more resources than are available directly to the code that called it. Be very careful in your use of the privileged construct, and always remember to make the privileged code section as small as possible.",
+                "metadata": {
+                    "cwe": [
+                        "CWE-269: Improper Privilege Management"
+                    ],
+                    "references": [
+                        "https://docs.oracle.com/javase/8/docs/technotes/guides/security/doprivileged.html",
+                        "https://wiki.sei.cmu.edu/confluence/display/java/Privilege+Escalation",
+                        "http://phrack.org/papers/escaping_the_java_sandbox.html"
+                    ],
+                    "category": "security",
+                    "technology": [
+                        "java"
+                    ],
+                    "owasp": [
+                        "A04:2021 - Insecure Design"
+                    ],
+                    "subcategory": [
+                        "audit"
+                    ],
+                    "likelihood": "LOW",
+                    "impact": "MEDIUM",
+                    "confidence": "LOW",
+                    "license": "Semgrep Rules License v1.0. For more details, visit semgrep.dev/legal/rules-license",
+                    "vulnerability_class": [
+                        "Improper Authorization"
+                    ],
+                    "source": "https://semgrep.dev/r/java.lang.security.do-privileged-use.do-privileged-use",
+                    "shortlink": "https://sg.run/6n76",
+                    "semgrep.dev": {
+                        "rule": {
+                            "origin": "community",
+                            "r_id": 9159,
+                            "rule_id": "bwUw28",
+                            "rv_id": 945721,
+                            "url": "https://semgrep.dev/playground/r/o5TZeWv/java.lang.security.do-privileged-use.do-privileged-use",
+                            "version_id": "o5TZeWv"
+                        }
+                    }
+                },
+                "severity": "WARNING",
+                "fingerprint": "6c98e08fb498aceabba84aa54ab3e7c437e8e7d3652533ac6767f3d14a800198b1eb6d0ddcf3c2cd2dd9d664701eb54dc2c404599a85f987e2d4072ccdaa9cef_0",
+                "lines": "    class MyAction implements PrivilegedAction<Void> {\n        public Void run() {\n            // Privileged code goes here, for example:\n            System.loadLibrary(\"awt\");\n            return null; // nothing to return\n        }\n    }",
+                "is_ignored": false,
+                "engine_kind": "OSS",
+                "validation_state": "NO_VALIDATOR"
+            }
+        },
+        {
+            "check_id": "java.lang.security.do-privileged-use.do-privileged-use",
+            "path": "WeakPackage-java/src/main/java/WeakPackageId/PrivilegeUse.java",
+            "start": {
+                "line": 20,
+                "col": 9,
+                "offset": 474
+            },
+            "end": {
+                "line": 20,
+                "col": 44,
+                "offset": 509
+            },
+            "extra": {
+                "metavars": {},
+                "message": "Marking code as privileged enables a piece of trusted code to temporarily enable access to more resources than are available directly to the code that called it. Be very careful in your use of the privileged construct, and always remember to make the privileged code section as small as possible.",
+                "metadata": {
+                    "cwe": [
+                        "CWE-269: Improper Privilege Management"
+                    ],
+                    "references": [
+                        "https://docs.oracle.com/javase/8/docs/technotes/guides/security/doprivileged.html",
+                        "https://wiki.sei.cmu.edu/confluence/display/java/Privilege+Escalation",
+                        "http://phrack.org/papers/escaping_the_java_sandbox.html"
+                    ],
+                    "category": "security",
+                    "technology": [
+                        "java"
+                    ],
+                    "owasp": [
+                        "A04:2021 - Insecure Design"
+                    ],
+                    "subcategory": [
+                        "audit"
+                    ],
+                    "likelihood": "LOW",
+                    "impact": "MEDIUM",
+                    "confidence": "LOW",
+                    "license": "Semgrep Rules License v1.0. For more details, visit semgrep.dev/legal/rules-license",
+                    "vulnerability_class": [
+                        "Improper Authorization"
+                    ],
+                    "source": "https://semgrep.dev/r/java.lang.security.do-privileged-use.do-privileged-use",
+                    "shortlink": "https://sg.run/6n76",
+                    "semgrep.dev": {
+                        "rule": {
+                            "origin": "community",
+                            "r_id": 9159,
+                            "rule_id": "bwUw28",
+                            "rv_id": 945721,
+                            "url": "https://semgrep.dev/playground/r/o5TZeWv/java.lang.security.do-privileged-use.do-privileged-use",
+                            "version_id": "o5TZeWv"
+                        }
+                    }
+                },
+                "severity": "WARNING",
+                "fingerprint": "ecab620c6f4ebff352b076804cdea09908e01e76c043ab8ebd951b8c63f11540b823ad8ccc4aa3181ce5a81b4271f87c0590cea6353b75fcee50374968f58d3e_0",
+                "lines": "        AccessController.doPrivileged(mya);",
+                "is_ignored": false,
+                "engine_kind": "OSS",
+                "validation_state": "NO_VALIDATOR"
+            }
+        },
+        {
+            "check_id": "java.lang.security.do-privileged-use.do-privileged-use",
+            "path": "WeakPackage-java/src/main/java/WeakPackageId/PrivilegeUse.java",
+            "start": {
+                "line": 24,
+                "col": 9,
+                "offset": 583
+            },
+            "end": {
+                "line": 30,
+                "col": 12,
+                "offset": 853
+            },
+            "extra": {
+                "metavars": {},
+                "message": "Marking code as privileged enables a piece of trusted code to temporarily enable access to more resources than are available directly to the code that called it. Be very careful in your use of the privileged construct, and always remember to make the privileged code section as small as possible.",
+                "metadata": {
+                    "cwe": [
+                        "CWE-269: Improper Privilege Management"
+                    ],
+                    "references": [
+                        "https://docs.oracle.com/javase/8/docs/technotes/guides/security/doprivileged.html",
+                        "https://wiki.sei.cmu.edu/confluence/display/java/Privilege+Escalation",
+                        "http://phrack.org/papers/escaping_the_java_sandbox.html"
+                    ],
+                    "category": "security",
+                    "technology": [
+                        "java"
+                    ],
+                    "owasp": [
+                        "A04:2021 - Insecure Design"
+                    ],
+                    "subcategory": [
+                        "audit"
+                    ],
+                    "likelihood": "LOW",
+                    "impact": "MEDIUM",
+                    "confidence": "LOW",
+                    "license": "Semgrep Rules License v1.0. For more details, visit semgrep.dev/legal/rules-license",
+                    "vulnerability_class": [
+                        "Improper Authorization"
+                    ],
+                    "source": "https://semgrep.dev/r/java.lang.security.do-privileged-use.do-privileged-use",
+                    "shortlink": "https://sg.run/6n76",
+                    "semgrep.dev": {
+                        "rule": {
+                            "origin": "community",
+                            "r_id": 9159,
+                            "rule_id": "bwUw28",
+                            "rv_id": 945721,
+                            "url": "https://semgrep.dev/playground/r/o5TZeWv/java.lang.security.do-privileged-use.do-privileged-use",
+                            "version_id": "o5TZeWv"
+                        }
+                    }
+                },
+                "severity": "WARNING",
+                "fingerprint": "ecab620c6f4ebff352b076804cdea09908e01e76c043ab8ebd951b8c63f11540b823ad8ccc4aa3181ce5a81b4271f87c0590cea6353b75fcee50374968f58d3e_1",
+                "lines": "        AccessController.doPrivileged(new PrivilegedAction<Void>() {\n            public Void run() {\n                // Privileged code goes here, for example:\n                System.loadLibrary(\"awt\");\n                return null; // nothing to return\n            }\n        });",
+                "is_ignored": false,
+                "engine_kind": "OSS",
+                "validation_state": "NO_VALIDATOR"
+            }
+        },
+        {
+            "check_id": "java.lang.security.do-privileged-use.do-privileged-use",
+            "path": "WeakPackage-java/src/main/java/WeakPackageId/PrivilegeUse.java",
+            "start": {
+                "line": 34,
+                "col": 9,
+                "offset": 929
+            },
+            "end": {
+                "line": 40,
+                "col": 11,
+                "offset": 1180
+            },
+            "extra": {
+                "metavars": {},
+                "message": "Marking code as privileged enables a piece of trusted code to temporarily enable access to more resources than are available directly to the code that called it. Be very careful in your use of the privileged construct, and always remember to make the privileged code section as small as possible.",
+                "metadata": {
+                    "cwe": [
+                        "CWE-269: Improper Privilege Management"
+                    ],
+                    "references": [
+                        "https://docs.oracle.com/javase/8/docs/technotes/guides/security/doprivileged.html",
+                        "https://wiki.sei.cmu.edu/confluence/display/java/Privilege+Escalation",
+                        "http://phrack.org/papers/escaping_the_java_sandbox.html"
+                    ],
+                    "category": "security",
+                    "technology": [
+                        "java"
+                    ],
+                    "owasp": [
+                        "A04:2021 - Insecure Design"
+                    ],
+                    "subcategory": [
+                        "audit"
+                    ],
+                    "likelihood": "LOW",
+                    "impact": "MEDIUM",
+                    "confidence": "LOW",
+                    "license": "Semgrep Rules License v1.0. For more details, visit semgrep.dev/legal/rules-license",
+                    "vulnerability_class": [
+                        "Improper Authorization"
+                    ],
+                    "source": "https://semgrep.dev/r/java.lang.security.do-privileged-use.do-privileged-use",
+                    "shortlink": "https://sg.run/6n76",
+                    "semgrep.dev": {
+                        "rule": {
+                            "origin": "community",
+                            "r_id": 9159,
+                            "rule_id": "bwUw28",
+                            "rv_id": 945721,
+                            "url": "https://semgrep.dev/playground/r/o5TZeWv/java.lang.security.do-privileged-use.do-privileged-use",
+                            "version_id": "o5TZeWv"
+                        }
+                    }
+                },
+                "severity": "WARNING",
+                "fingerprint": "ecab620c6f4ebff352b076804cdea09908e01e76c043ab8ebd951b8c63f11540b823ad8ccc4aa3181ce5a81b4271f87c0590cea6353b75fcee50374968f58d3e_2",
+                "lines": "        AccessController.doPrivileged((PrivilegedAction<Void>)\n            () -> {\n                // Privileged code goes here, for example:\n                System.loadLibrary(\"awt\");\n                return null; // nothing to return\n            }\n        );",
+                "is_ignored": false,
+                "engine_kind": "OSS",
+                "validation_state": "NO_VALIDATOR"
+            }
+        },
+        {
+            "check_id": "java.lang.security.audit.xss.no-direct-response-writer.no-direct-response-writer",
+            "path": "WeakPackage-java/src/main/java/WeakPackageId/XSSExample.java",
+            "start": {
+                "line": 7,
+                "col": 9,
+                "offset": 273
+            },
+            "end": {
+                "line": 7,
+                "col": 93,
+                "offset": 357
+            },
+            "extra": {
+                "metavars": {
+                    "$1": {
+                        "start": {
+                            "line": 1,
+                            "col": 1,
+                            "offset": 0
+                        },
+                        "end": {
+                            "line": 1,
+                            "col": 13,
+                            "offset": 12
+                        },
+                        "abstract_content": "getParameter"
+                    },
+                    "$REQ": {
+                        "start": {
+                            "line": 6,
+                            "col": 28,
+                            "offset": 235
+                        },
+                        "end": {
+                            "line": 6,
+                            "col": 35,
+                            "offset": 242
+                        },
+                        "abstract_content": "request"
+                    },
+                    "$REQFUNC": {
+                        "start": {
+                            "line": 6,
+                            "col": 36,
+                            "offset": 243
+                        },
+                        "end": {
+                            "line": 6,
+                            "col": 48,
+                            "offset": 255
+                        },
+                        "abstract_content": "getParameter"
+                    },
+                    "$RESPONSE": {
+                        "start": {
+                            "line": 7,
+                            "col": 9,
+                            "offset": 273
+                        },
+                        "end": {
+                            "line": 7,
+                            "col": 17,
+                            "offset": 281
+                        },
+                        "abstract_content": "response"
+                    },
+                    "$WRITE": {
+                        "start": {
+                            "line": 7,
+                            "col": 30,
+                            "offset": 294
+                        },
+                        "end": {
+                            "line": 7,
+                            "col": 37,
+                            "offset": 301
+                        },
+                        "abstract_content": "println"
+                    }
+                },
+                "message": "Detected a request with potential user-input going into a OutputStream or Writer object. This bypasses any view or template environments, including HTML escaping, which may expose this application to cross-site scripting (XSS) vulnerabilities. Consider using a view technology such as JavaServer Faces (JSFs) which automatically escapes HTML views.",
+                "metadata": {
+                    "likelihood": "HIGH",
+                    "impact": "MEDIUM",
+                    "confidence": "MEDIUM",
+                    "category": "security",
+                    "cwe": [
+                        "CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+                    ],
+                    "cwe2021-top25": true,
+                    "cwe2022-top25": true,
+                    "owasp": [
+                        "A07:2017 - Cross-Site Scripting (XSS)",
+                        "A03:2021 - Injection"
+                    ],
+                    "references": [
+                        "https://www3.ntu.edu.sg/home/ehchua/programming/java/JavaServerFaces.html"
+                    ],
+                    "subcategory": [
+                        "vuln"
+                    ],
+                    "technology": [
+                        "java",
+                        "servlets"
+                    ],
+                    "interfile": true,
+                    "license": "Semgrep Rules License v1.0. For more details, visit semgrep.dev/legal/rules-license",
+                    "vulnerability_class": [
+                        "Cross-Site-Scripting (XSS)"
+                    ],
+                    "source": "https://semgrep.dev/r/java.lang.security.audit.xss.no-direct-response-writer.no-direct-response-writer",
+                    "shortlink": "https://sg.run/KlRL",
+                    "semgrep.dev": {
+                        "rule": {
+                            "origin": "community",
+                            "r_id": 9211,
+                            "rule_id": "j2Uv7B",
+                            "rv_id": 945713,
+                            "url": "https://semgrep.dev/playground/r/DkTNp33/java.lang.security.audit.xss.no-direct-response-writer.no-direct-response-writer",
+                            "version_id": "DkTNp33"
+                        }
+                    }
+                },
+                "severity": "WARNING",
+                "fingerprint": "367b08bc482ab693ecf844e219c59df9ce3dfb111b43ad1b7978e8e8d5e56e7854eac89af6026adbf8965d91d6bd3fcb1fe003bbb0342a8f953eb8ad85ced354_0",
+                "lines": "        response.getWriter().println(\"<html><body>Welcome, \" + userInput + \"</body></html>\"); // Unsanitized input",
+                "is_ignored": false,
+                "dataflow_trace": {
+                    "taint_source": [
+                        "CliLoc",
+                        [
+                            {
+                                "path": "WeakPackage-java/src/main/java/WeakPackageId/XSSExample.java",
+                                "start": {
+                                    "line": 6,
+                                    "col": 28,
+                                    "offset": 235
+                                },
+                                "end": {
+                                    "line": 6,
+                                    "col": 56,
+                                    "offset": 263
+                                }
+                            },
+                            "request.getParameter(\"name\")"
+                        ]
+                    ],
+                    "intermediate_vars": [
+                        {
+                            "location": {
+                                "path": "WeakPackage-java/src/main/java/WeakPackageId/XSSExample.java",
+                                "start": {
+                                    "line": 6,
+                                    "col": 16,
+                                    "offset": 223
+                                },
+                                "end": {
+                                    "line": 6,
+                                    "col": 25,
+                                    "offset": 232
+                                }
+                            },
+                            "content": "userInput"
+                        }
+                    ],
+                    "taint_sink": [
+                        "CliLoc",
+                        [
+                            {
+                                "path": "WeakPackage-java/src/main/java/WeakPackageId/XSSExample.java",
+                                "start": {
+                                    "line": 7,
+                                    "col": 9,
+                                    "offset": 273
+                                },
+                                "end": {
+                                    "line": 7,
+                                    "col": 93,
+                                    "offset": 357
+                                }
+                            },
+                            "response.getWriter().println(\"<html><body>Welcome, \" + userInput + \"</body></html>\")"
+                        ]
+                    ]
+                },
                 "engine_kind": "OSS",
                 "validation_state": "NO_VALIDATOR"
             }
@@ -63,11 +647,23 @@
     "errors": [],
     "paths": {
         "scanned": [
-            "CMakeLists.txt",
-            "README.md",
-            "database.c",
-            "database.h",
-            "main.c"
+            "Dockerfile/Dockerfile",
+            "Dockerfile/README.md",
+            "WeakPackage-c/CMakeLists.txt",
+            "WeakPackage-c/Makefile",
+            "WeakPackage-c/README.md",
+            "WeakPackage-c/database.c",
+            "WeakPackage-c/database.h",
+            "WeakPackage-c/main.c",
+            "WeakPackage-c/test.db",
+            "WeakPackage-java/README.md",
+            "WeakPackage-java/pom.xml",
+            "WeakPackage-java/src/main/java/WeakPackageId/App.java",
+            "WeakPackage-java/src/main/java/WeakPackageId/InsecureDeserialization.java",
+            "WeakPackage-java/src/main/java/WeakPackageId/PrivilegeUse.java",
+            "WeakPackage-java/src/main/java/WeakPackageId/XSSExample.java",
+            "secrets/README.md",
+            "secrets/secrets.env"
         ]
     },
     "interfile_languages_used": [],

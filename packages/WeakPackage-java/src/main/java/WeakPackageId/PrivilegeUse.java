@@ -41,7 +41,7 @@ public class PrivilegeUse {
     }
 
     public static void main(String... args) {
-        NoReturnNoException myApplication = new NoReturnNoException();
+        PrivilegeUse myApplication = new PrivilegeUse();
         myApplication.somemethod();
     }
 }
