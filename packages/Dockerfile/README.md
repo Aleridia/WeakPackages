@@ -7,7 +7,6 @@ The provided Dockerfile is bad. Here are the reasons :
 3. `/var/lib/apt/lists/*` not deleted after use of apt-get,
 4. Installing packages without cleaning up the package cache (apt-get clean),
 5. Running the image as the root user,
-6. Using absolute paths in COPY and ADD commands,
 7. Using wildcard characters in COPY, which can be unpredictable,
 8. Using ADD instead of COPY for local files,
 9. Downloading and extracting files from an insecure URL with ADD,
@@ -29,8 +28,8 @@ The provided Dockerfile is bad. Here are the reasons :
 
 ### Custom rules
 So we need to write some custom rules to cover all the weaknesses.
+
 4. Remove apt-cache with apt-clean (warning)
-6. Don't use absolute path for COPY and ADD (warning)
 7. Don't use wildcard character in COPY (info)
 8. Use COPY instead of ADD (error)
 9. Use insecure URL (warning)
