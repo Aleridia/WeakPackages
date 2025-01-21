@@ -13,6 +13,3 @@ Rules are default rules with additionnal coverage from [this project](https://gi
 
 ### Hadolint
 - Run with docker : `sudo docker run --rm -i hadolint/hadolint hadolint -f json - < packages/Dockerfile/Dockerfile > results/hadolint.json`
-
-### Dependency-check
-- Run with docker : `sudo docker run -v "${PWD}/packages/WeakPackage-c/:/src" -v "${PWD}/resources/dependency/data/:/usr/share/dependency-check/data" -v "${PWD}/results/:/results" --rm owasp/dependency-check --scan /src --out /results --nvdApiKey <API-KEY>`
