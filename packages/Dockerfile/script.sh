@@ -1,2 +1,2 @@
 #!/bin/sh
-touch bad.txt
+echo "Bad scripting"
