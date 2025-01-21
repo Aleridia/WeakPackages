@@ -1,4 +1,8 @@
-## Dockerfile
+# Dockerfile
+## How to run
+To build the image, be in the [Dockerfile](.) folder : `sudo docker -D build -t bad-image .`
+
+## Explaination
 ### What is bad in this Dockerfile
 The provided Dockerfile is bad. Here are the reasons :
 

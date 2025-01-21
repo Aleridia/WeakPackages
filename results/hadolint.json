@@ -8,28 +8,28 @@
         "message": "Always tag the version of an image explicitly"
     },
     {
-        "code": "DL3015",
+        "code": "DL3009",
         "column": 1,
         "file": "-",
         "level": "info",
         "line": 5,
-        "message": "Avoid additional packages by specifying `--no-install-recommends`"
+        "message": "Delete the apt-get lists after installing something"
     },
     {
         "code": "DL3008",
         "column": 1,
         "file": "-",
         "level": "warning",
-        "line": 5,
+        "line": 8,
         "message": "Pin versions in apt get install. Instead of `apt-get install <package>` use `apt-get install <package>=<version>`"
     },
     {
-        "code": "DL3009",
+        "code": "DL3015",
         "column": 1,
         "file": "-",
         "level": "info",
         "line": 8,
-        "message": "Delete the apt-get lists after installing something"
+        "message": "Avoid additional packages by specifying `--no-install-recommends`"
     },
     {
         "code": "DL3059",
