@@ -1,6 +1,13 @@
 # Dockerfile
 ## How to run
-To build the image, be in the [Dockerfile](.) folder : `sudo docker -D build -t bad-image .`
+To build the image, be in the [Dockerfile](.) folder : `docker -D build -t image .`
+To extract the image : 
+- `xz --decompress image.tar.xz`
+- `docker load < image.tar`
+
+To save the image : `docker save image | xz > image.tar.xz`
+
+To pull the image : `docker push aleridia/weakpackage`
 
 ## Explaination
 ### What is bad in this Dockerfile

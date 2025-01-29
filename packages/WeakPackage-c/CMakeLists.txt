@@ -5,7 +5,7 @@ project(WeakPackage-c)
 set(CMAKE_C_STANDARD 99)
 
 # Add executables
-add_executable(vulnerable_project main.c database.c)
+add_executable(vulnerable_project src/main.c src/database.c)
 
 # Add SQLite3 if required
 find_package(SQLite3 REQUIRED)
